@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
+import ItemCount from "./ItemCount";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -33,7 +34,13 @@ const ItemDetailContainer = () => {
             <Card.Body>
               <Card.Title>{prod.titulo}</Card.Title>
               <Card.Text>${prod.precio}</Card.Text>
-              <Button variant="primary">{prod.precio}</Button>
+              <ItemCount
+               id={prod.id}
+               stock={20}
+               precio={prod.precio}
+               nombre={prod.titulo}
+               img={prod.imagen}
+              />
             </Card.Body>
           </Card>
         );
